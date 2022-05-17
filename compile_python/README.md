@@ -1,9 +1,8 @@
 # **Compile Python**
-
-add this to top of .py so cython uses python3 `#cython: language_level=3`
+Use cython to translate python files into C then compile it. Used to protect source code in distribution
 
 ## **Executable** ##
- 
+add this to top of .py so cython uses python3 `#cython: language_level=3` \
 to compile into executable
 ```
 cython3 --embed -o hello.c hello.py
@@ -18,22 +17,19 @@ In compile.py (will generate .so file)
 from distutils.core import setup
 from distutils.extension import Extension
 from Cython.Distutils import build_ext
- 
 
 ext_modules = [
     Extension("say_hello", ["hello.py"]) # the generated file will be say_hello.so
 ]
- 
 
 for e in ext_modules:
-    e.cython_directives = {​​​​'language_level': "3"}​​​​​​​​​​​ # all are Python-3
- 
-
+    e.cython_directives = {'language_level': "3"} # all are Python-3
+    
 setup(
     name = 'My_Program_Name',
-    cmdclass = {​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​'build_ext': build_ext}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​,
+    cmdclass = {'build_ext': build_ext},
     ext_modules = ext_modules
-)​​
+)
 ```
 
 run `python compile.py build_ext --inplace` to get .so files \
