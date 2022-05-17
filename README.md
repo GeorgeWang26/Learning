@@ -1,3 +1,3 @@
 # **CoolStuff**
 
-[Compile python files](compile_python/README.md)
+[Compile python files](compile_python/)
