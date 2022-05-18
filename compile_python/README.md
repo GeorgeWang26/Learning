@@ -7,12 +7,14 @@ add this to top of .py so cython uses python3 `#cython: language_level=3`
 to compile into executable
 ```
 cython3 --embed -o hello.c hello.py
-gcc -Os -I /usr/include/python3.x -o hello hello.c -lpython3.xm -lpthread -lm -lutil -ldl
+gcc -Os -I /usr/include/python3.x -o hello hello.c -lpython3.x -lpthread -lm -lutil -ldl     # x is the version of python, 3.8 (NOT 3.8.10)
 ./hello
 ```
 `gcc <C_file_from_cython> -I<include_directory> -L<directory_containing_libpython> -l<name_of_libpython_without_lib_on_the_front> -o <output_file_name>`
 
 ## **Shared library (.so)**
+Run compile.py in same directory or parent directory, because running cython in child directory can cause path errors when referencing to target .py file with "../"
+
 In compile.py (will generate .so file)
 ```
 from distutils.core import setup
@@ -36,7 +38,7 @@ setup(
 )​​
 ```
 
-run `python compile.py build_ext --inplace` to get .so files \
+run `python3 compile.py build_ext --inplace` to get .so files \
 In main.py (wrapper used to execute .so files)
 ```
 from say_hello import hi
