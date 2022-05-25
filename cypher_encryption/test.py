@@ -1,0 +1,8 @@
+f = open("test.txt", "w")
+f.writelines(["line1    first line more contents", "\n\n\n\n22222"])
+f.close()
+f = open("test.txt", "r")
+print("1:", f.readline())
+print("2:", f.readline())
+lines = f.readlines()
+print(lines)
