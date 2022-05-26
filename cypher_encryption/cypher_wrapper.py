@@ -1,14 +1,14 @@
-import encrypt
+import cypher
 
 def validation():
     # encrypt.vigenere_cipher()
-    key = encrypt.get_key()
+    key = cypher.get_key()
     # key += "0"
     print(key)
     f = open("encrypted", "r")
-    d = encrypt.vigenere_cipher(key, f.read(), "d")
-    print(d == encrypt.plain_text)
-    if d == encrypt.plain_text:
+    d = cypher.vigenere_cipher(key, f.read(), "d")
+    print(d == cypher.plain_text)
+    if d == cypher.plain_text:
         print("proceed")
     else:
         print("quit now")

@@ -1,3 +1,3 @@
-from wrapper import validation
+from cypher_wrapper import validation
 
 validation()
