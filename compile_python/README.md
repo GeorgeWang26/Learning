@@ -16,8 +16,11 @@ Run compile.py in same directory or parent directory, because running cython in 
 
 In compile.py (will generate .so file)
 ```
-from distutils.core import setup
-from distutils.extension import Extension
+# legacy library
+# from distutils.core import setup
+# from distutils.extension import Extension
+from setuptools import setup
+from setuptools.extension import Extension
 from Cython.Distutils import build_ext
 
 ext_modules = [
