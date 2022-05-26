@@ -1,5 +1,5 @@
 # AES encryption
-This program is used to enforce that the source code is only runnable on certified devices.
+This program is used to prevent source code from running on unauthorized devices
 
 ## Supported functions
 Under aes.py, there are four functions
