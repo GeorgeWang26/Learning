@@ -27,7 +27,7 @@ s = s.decode()[7:-1]
 print(s)
 key = gma() + s
 print(key)
-plain_text = "<random plain-text+)*8<random plain-text+)*8<random plain-text+)*8<random plain-text+)*8<random plain-text+)*8<random plain-text+)*8<random plain-text+)*8<random plain-text+)*8<random plain-text+)*8<random plain-text+)*8<random plain-text+)*8<random plain-text+)*8"
+plain_text = "JKASHDLSADHAWEN<MM<ICUPEJBWHJLQJH:OIE@*(#_!*$!@U$B!@Y$_(*!@&JHJ#K!B#I!@*)(#"
 
 with open("encrypted", "w") as f:
     e = vigenere_cipher(key, plain_text, "e")
