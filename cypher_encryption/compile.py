@@ -7,7 +7,7 @@ from setuptools.extension import Extension
 from Cython.Distutils import build_ext
 
 ext_modules = [
-    Extension("wrapper", ["wrapper.py"]),
+    Extension("aes", ["aes.py"]),
     Extension("encrypt", ["encrypt.py"])
 ]
 
