@@ -2,7 +2,7 @@
 Use cython to translate python files into C then compile it. Used to protect source code in distribution
 
 ## **Executable** ##
-install cython3 `sudo apt-get install -y cython3`
+install cython3 `sudo apt-get install -y cython3` \
 add this to top of .py so cython uses python3 `#cython: language_level=3` \
 to compile into executable
 ```
