@@ -1,5 +1,6 @@
 # AES encryption
 This program is used to prevent source code from running on unauthorized devices
+`pip3 install pycryptodome`
 
 ## Supported functions
 Under aes.py, there are four functions
