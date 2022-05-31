@@ -3,8 +3,7 @@ Use cython to translate python files into C then compile it. Used to protect sou
 
 ## **Executable** ##
 install cython3 `sudo apt-get install -y cython3` \
-add this to top of .py so cython uses python3 `#cython: language_level=3` \
-to compile into executable
+add this to top of .py so cython uses python3 `#cython: language_level=3` to compile into executable
 ```
 cython3 --embed -o hello.c hello.py
 gcc -Os -I /usr/include/python3.x -o hello hello.c -lpython3.x -lpthread -lm -lutil -ldl     # x is the version of python, 3.8 (NOT 3.8.10)
