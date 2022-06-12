@@ -1,0 +1,17 @@
+IMU is used to determine orientation and linear acceleration of the robot
+GPS+IMU can determine position and orientation of robot, GPS get a absolute reading but is not very precise and IMU get a relative reading and help narrow down the wider area provided by GPS
+
+AMCL (Adaptive Monte Carlo Localization) determines the location and orientation of the robot when given a map of the environment. Randomly generate points on the map with random orientation. It then take LIDAR info, eliminate points that don't result in similar LIDAR reading. Generate more points in those similar areas again with random orientation but less quantity. Drive robot around with odometry reading to record the path. Perform same path to the points with some random behaviours (turn more, turn less, drive faster, drive slower etc.) to overcome odometry noice. It eliminates points again, and generate some more. This cycle continues until a single area with single orientation is left after multiple eliminations. The final result will be the orientation and position of the robot in the map. Notice that AMCL can only be applied when a map of the environment is given.
+
+
+SLAM (Simultaneous Localization And Mapping) drives the robot around, use LIDAR to record features of the map and use odometry (or GPS+IMU) to record the movement of the robot. Together to build a pos graph that has point cloud of the map relative to the measured movement, notice that this pos graph currently has errors due to odometry/LIDAR noice, it requires optimization to get a more precise map. 
+Slam will associate two positions (where LIDAR data is recorded) when similar feature is spotted (rather miss one association than getting a wrong one) and use this to close the loop of other position points and their LIDAR reading. This optimize the pos graph to generate a global map of the environment. This becomes the binary occupancy map where the environment is a grid plot and place with obstacle is 1 and empty space is 0 (or the other way around). This is the cost map.
+
+A* is like Dijkstra, but the node cost is sum of distance from start (all cost together) and distance to end (braindead approach, doesn't care if there is wall in middle)
+
+question:
+- In AMCL, odometry (wheel encoder to count wheel rotation) is used to sense the motion of the robot instead of using GPS+IMU. It mentioned in the video that for SLAM, to get the robot position, it can use either odometry or GPS or IMU or GPS+IMU. Not really. Odemetry is always used to get robot's position relative to its starting position. LIDAR is like GPS+IMU but is used indoor. LIDAR combined with AMCL and SLAM are used for indoor localization. However, when being outdoor, the environment is empty (flat) and don't really have features, so LIDAR won't really perform to eliminates points in AMCL or close the loop in SLAM, so GPS and IMU are used to get localization done when being outdoor.
+- Or is indoor: odometry, outdoor: GPS+IMU? No, odometry is used both indoor and outdoor. GPS+IMU is used outdoor for global frame and localization, and LIDAR is used indoor together with AMCL and SLAM for localization.
+- Is the binary occupancy map same as cost map? Yes
+- Both AMCL and SLAM are used for indoor only. Yes
+- Localization and path planning. Two main things in autonomous navigation. Localization is what AMCL and SLAM (indoor) and GPS+IMU (outdoor) are used for. Planning uses A* (branch of dijkstra)
