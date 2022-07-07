@@ -27,6 +27,7 @@ def get_password():
 
 def encrypt():
     salt = get_random_bytes(32)
+    # https://pycryptodome.readthedocs.io/en/latest/src/protocol/kdf.html#scrypt
     key = scrypt(get_password(), salt, key_len=32, N=2**20, r=8, p=1)  # work facrtor N can be from 2^14 to 2^20, change based on time cost
     cipher = AES.new(key, AES.MODE_GCM)
     ciphertext, tag = cipher.encrypt_and_digest(data.encode())
