@@ -1,2 +1,1 @@
-compile proto file, -I can be ommited, will look at current directory ./
-protoc -I=$SRC_DIR --python_out=$DST_DIR $SRC_DIR/addressbook.proto
+protoc -I=. --python_out=. ./addressbook.proto
