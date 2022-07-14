@@ -25,7 +25,7 @@ def get_password():
         quit()
     pwd = gma() + serial + uuid
     # pwd = serial + uuid
-    print("password:", pwd)
+    # print("password:", pwd)
     return pwd
 
 def decrypt():
