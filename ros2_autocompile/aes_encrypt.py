@@ -3,7 +3,7 @@
 from Crypto.Random import get_random_bytes
 from Crypto.Cipher import AES
 from Crypto.Protocol.KDF import scrypt
-#from getmac import get_mac_address as gma
+from getmac import get_mac_address as gma
 import subprocess
 from os import path
 
@@ -25,9 +25,9 @@ def get_password():
     else:
         print("===================== ERROR: unrecognized cpu archetecture =====================")
         quit()
-#    pwd = gma() + serial + uuid
-    # print("password:", pwd)
-    pwd = serial + uuid
+    pwd = gma() + serial + uuid
+    # pwd = serial + uuid
+    print("password:", pwd)
     return pwd
 
 def encrypt():
